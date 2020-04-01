@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 
 // function App() {
 //   return (
@@ -6,14 +6,29 @@ import React, {Component} from 'react';
 //   );
 // }
 
-class App extends Component{
-  render() {
-    return (
-      <React.Fragment>
-        <input type="text" onChange={() => { alert("aa") }}></input>
-      </React.Fragment>
-    )
-  }
-}
+// class App extends Component{
+//   render() {
+//     return (
+//       <React.Fragment>
+//         <input type="text" onChange={() => { alert("aa") }}></input>
+//       </React.Fragment>
+//     )
+//   }
+// }
   
-  export default App;
+const App = () => {
+  return (
+    <div>
+      <Cat />
+      <Cat/>
+      <Cat/>      
+    </div>
+  )
+}
+
+const Cat = () => {
+  return <div>Meaw!</div>
+}
+
+
+export default App;
