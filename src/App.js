@@ -17,17 +17,23 @@ import React from 'react';
 // }
   
 const App = () => {
+  const profiles = [
+    { name: "Taro", age: 10 },
+    {name:"Hanako", age:5},    
+  ]
   return (
     <div>
-      <Cat />
-      <Cat/>
-      <Cat/>      
+      {
+        profiles.map((profile, index) => {
+          return <User name={profile.name} age={profile.age} key={index} />
+        })
+      }
     </div>
   )
 }
 
-const Cat = () => {
-  return <div>Meaw!</div>
+const User = (props) => {
+  return <div>Hi, Iam {props.name} years old!</div>
 }
 
 
