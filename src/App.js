@@ -18,8 +18,9 @@ import React from 'react';
   
 const App = () => {
   const profiles = [
-    { name: "Taro", age: 10 },
-    {name:"Hanako", age:5},    
+    {name: "Taro", age:10 },
+    { name: "Hanako", age: 5 },
+    { name: "noname"},
   ]
   return (
     <div>
@@ -33,8 +34,11 @@ const App = () => {
 }
 
 const User = (props) => {
-  return <div>Hi, Iam {props.name} years old!</div>
+  return <div>Hi, Iam {props.name}, {props.age} years old!</div>
 }
 
+User.defaultProps = {
+  age:1
+}
 
 export default App;
