@@ -1,28 +1,35 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { increment, decrement } from '../actions';
 
-const App = () => (
-  <Counter></Counter>
-)
-
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: 0 }; 
-  }
-  handlePlusButton = () => {
-    this.setState({ count: this.state.count + 1})
-  }
-  handleMinusButton = () => {
-    this.setState({ count: this.state.count - 1})
-  }
+class App extends Component {
   render() {
+    // propsとはコンポーネントに備わっている標準機能で、外部よりリードオンリー(読み取り専用)なパラメータを受け取る仕組みです。
+    const props = this.props;
+    
     return (
       <div>
-      <div>Count:{this.state.count}</div>
-        <button onClick={this.handlePlusButton}>+1</button>
-        <button onClick={this.handleMinusButton}>-1</button>
+        <div>Value:{props.value}</div>
+        <button onClick={props.increment}>+1</button>
+        <button onClick={props.decrement}>-1</button>
       </div>
     )
   }
 }
-export default App;
+
+const mapStateToProps = state => {
+  return {
+    value: state.count.value
+  }
+}
+
+const mapDispachProps = dispatch => {
+  return {
+    increment: () => dispatch(increment()),
+    decrement: () => dispatch(decrement()),
+  }
+}
+
+
+
+export default connect(mapStateToProps, mapDispachProps)(App);
