@@ -26,7 +26,7 @@ class EventsNew extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props
+    const { handleSubmit, pristine, submitting } = this.props
 
     return (
       //handleSubmitはredux-formの機能
@@ -34,7 +34,7 @@ class EventsNew extends Component {
         <div><Field label="Title" name="title" type="text" component={this.renderField}></Field></div>
         <div><Field label="Body" name="body" type="text" component={this.renderField}></Field></div>
         <div>
-          <input type="submit" value="Submit" disabled={false}></input>
+          <input type="submit" value="Submit" disabled={pristine || submitting}></input>
           <Link to="/">Cancel</Link>
         </div>
       </form>
